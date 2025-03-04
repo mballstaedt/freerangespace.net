@@ -10,195 +10,19 @@
         <link rel="icon" type="image/x-icon" href="./images/site_favicon_16_1712702279258.ico"/>
         <link rel="canonical" href="index.html">
        
-        <!-- Essential CSS: these files should contain the styling/visual look of your page -->
-       
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-    function toHash(str) {
-        var hash = 5381, i = str.length;
-        while (i) {
-            hash = hash * 33 ^ str.charCodeAt(--i)
-        }
-        return hash >>> 0
-    }
-</script>
-<script>
-    (function (global) {
-    //const cacheKey = global.cacheKey;
-    const isOffline = 'onLine' in navigator && navigator.onLine === false;
-    const hasServiceWorkerSupport = 'serviceWorker' in navigator;
-    if (isOffline) {
-        console.log('offline mode');
-    }
-    if (!hasServiceWorkerSupport) {
-        console.log('service worker is not supported');
-    }
-    if (hasServiceWorkerSupport && !isOffline) {
-        window.addEventListener('load', function () {
-            const serviceWorkerPath = '/runtime-service-worker.js?v=3';
-            navigator.serviceWorker
-                .register(serviceWorkerPath, { scope: './' })
-                .then(
-                    function (registration) {
-                        // Registration was successful
-                        console.log(
-                            'ServiceWorker registration successful with scope: ',
-                            registration.scope
-                        );
-                    },
-                    function (err) {
-                        // registration failed :(
-                        console.log('ServiceWorker registration failed: ', err);
-                    }
-                )
-                .catch(function (err) {
-                    console.log(err);
-                });
-        });
-
-        // helper function to refresh the page
-        var refreshPage = (function () {
-            var refreshing;
-            return function () {
-                if (refreshing) return;
-                // prevent multiple refreshes
-                var refreshkey = 'refreshed' + location.href;
-                var prevRefresh = localStorage.getItem(refreshkey);
-                if (prevRefresh) {
-                    localStorage.removeItem(refreshkey);
-                    if (Date.now() - prevRefresh < 30000) {
-                        return; // dont go into a refresh loop
-                    }
-                }
-                refreshing = true;
-                localStorage.setItem(refreshkey, Date.now());
-                console.log('refereshing page');
-                window.location.reload();
-            };
-        })();
-
-        function messageServiceWorker(data) {
-            return new Promise(function (resolve, reject) {
-                if (navigator.serviceWorker.controller) {
-                    var worker = navigator.serviceWorker.controller;
-                    var messageChannel = new MessageChannel();
-                    messageChannel.port1.onmessage = replyHandler;
-                    worker.postMessage(data, [messageChannel.port2]);
-                    function replyHandler(event) {
-                        resolve(event.data);
-                    }
-                } else {
-                    resolve();
-                }
-            });
-        }
-    }
-})(window);
-</script>
-<!-- Add manifest -->
-<!-- End PWA settings -->
 
 
 
 <link rel="canonical" href="index.html">
 
 <meta id="view" name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<title>Home
-</title>
 
-<!--Add favorites icons-->
 
 <link rel="apple-touch-icon"
       href="./images/Black+logo+-+lizard+only.png"/>
 
 <link rel="icon" type="image/x-icon" href="./images/site_favicon_16_1712702279258.ico"/>
-
-
-<script id='d-js-dmapi'>
-
-
-    if (!window.dmAPI) {
-        window.dmAPI = {
-            registerExternalRuntimeComponent: function () {
-            },
-            getCurrentDeviceType: function () {
-                return window._currentDevice;
-            },
-            runOnReady: (ns, fn) => {
-                const safeFn = dmAPI.toSafeFn(fn);
-                ns = ns || 'global_' + Math.random().toString(36).slice(2, 11);
-                const eventName = 'afterAjax.' + ns;
-
-                if (document.readyState === 'complete') {
-                    $.DM.events.off(eventName).on(eventName, safeFn);
-                    setTimeout(function () {
-                        safeFn({
-                            isAjax: false,
-                        });
-                    }, 0);
-                } else {
-                    window?.waitForDeferred?.('dmAjax', () => {
-                        $.DM.events.off(eventName).on(eventName, safeFn);
-                        safeFn({
-                            isAjax: false,
-                        });
-                    });
-                }
-            },
-            toSafeFn: (fn) => {
-                if (fn?.safe) {
-                    return fn;
-                }
-                const safeFn = function (...args) {
-                    try {
-                        return fn?.apply(null, args);
-                    } catch (e) {
-                        console.log('function failed ' + e.message);
-                    }
-                };
-                safeFn.safe = true;
-                return safeFn;
-            }
-        };
-    }
-
-    if (!window.requestIdleCallback) {
-        window.requestIdleCallback = function (fn) {
-            setTimeout(fn, 0);
-        }
-    }
-</script>
-
-
-
-
-
-
-
 
 <script id="d-js-load-css">
 
@@ -564,13 +388,11 @@
  <div class="u_1550057671 dmRespCol small-12 medium-6 large-6" id="1550057671"> <span id="1404306328"></span> 
  <nav class="u_1630621681 effect-text-color main-navigation unifiednav dmLinksMenu" role="navigation" layout-main="horizontal_nav_layout_2" layout-sub="submenu_horizontal_1" data-show-vertical-sub-items="HOVER" id="1630621681" dmle_extension="onelinksmenu" data-element-type="onelinksmenu" data-inject="menu" wr="true" icon="true" surround="true" adwords="" navigation-id="unifiedNav"> <ul role="menubar" class="unifiednav__container  " data-auto="navigation-pages"> <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="index.html" class="unifiednav__item  dmNavItemSelected  dmUDNavigationItem_00 black-text " target="" data-target-page-alias="" data-auto="selected-page"> <span class="nav-item-text " data-link-text="
          Home
-        " data-auto="page-text-style">Home<span class="icon icon-angle-down"></span> 
+        " data-auto="page-text-style"><span class="icon icon-angle-down"></span> 
 </span> 
 </a> 
 </li> 
- <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="contact.html" class="unifiednav__item  dmUDNavigationItem_010101943230 black-text " target="" data-target-page-alias=""> <span class="nav-item-text " data-link-text="
-         Contact
-        " data-auto="page-text-style">Contact<span class="icon icon-angle-down"></span> 
+
 </span> 
 </a> 
 </li> 
@@ -625,58 +447,22 @@
 </div> 
 </div> 
 </div> 
- <div class="u_1560552485 dmRespRow dmSectionParallaxNew hasBackgroundOverlay mobile-columns-reversed fullBleedChanged fullBleedMode" style="text-align: center;" id="1560552485" mode="1"> <div class="dmRespColsWrapper" id="1987069620"> <div class="dmRespCol medium-6 large-6 u_1022385333 small-12" id="1022385333"> <div class="u_1175222753 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1175222753"><img src="./images/13-1104w.png" id="1344179813" class="" data-dm-image-path="./images/13.png" width="1024" height="1024" onerror="handleImageLoadError(this)"/></div> 
 </div> 
- <div class="dmRespCol medium-6 large-6 u_1074088708 small-12" id="1074088708"> <div class="u_1644770479 dmNewParagraph" id="1644770479" style="transition-duration:1s;transition-timing-function:ease-in-out;transition-delay:initial;transition-property:opacity;display:block;line-height:initial;" data-element-type="paragraph" data-version="5"> <h3 class="text-align-left size-35"><span style="display: initial; color: rgb(255, 255, 255); font-weight: 600;" class="font-size-35">Would you like a consultation?</span></h3> 
-</div> <div class="u_1115367695 dmNewParagraph" id="1115367695" style="transition: none 0s ease 0s; display: block; text-align: left;" data-version="5"><p class="text-align-left"><span style="display: initial;"><br/></span></p><p><span style="display: initial; color: rgb(255, 255, 255);">Do you have questions or would you like to brainstorm some solutions? We&rsquo;re here to help. Send us a message and we&rsquo;ll get be in touch.</span></p><p><span style="display: initial;">&nbsp;</span></p><p><span style="display: initial;"><br/></span></p></div> <div class="u_1635135662 dmform default native-inputs" id="1635135662" data-element-type="dContactUsRespId" data-layout="layout-3" data-require-captcha="true" data-captcha-position="bottomleft" captcha="true"> <h3 class="dmform-title dmwidget-title" id="1137417641" hide="true"></h3> 
- <div class="dmform-wrapper" id="1353649666" captcha-lang="en"> <form method="post" class="dmRespDesignRow" locale="ENGLISH" id="1411832832"> <div class="dmforminput required  small-12 dmRespDesignCol medium-6 large-6 medium-5 large-5" id="1966907514"> <label for="1657766627" id="1789546950" class="" data-dm-for="dmform-0">Name</label> 
-<input type="text" class="" name="dmform-0" id="1657766627"/><input type="hidden" name="label-dmform-0" id="1371928127" class="" value="Name"/></div> 
- <div class="dmforminput required  small-12 dmRespDesignCol medium-6 large-6" id="1544860348"> <label for="1374377697" id="1060485123" class="" data-dm-for="dmform-1">Email</label> 
-<input type="email" class="" name="dmform-1" id="1374377697"/><input type="hidden" name="label-dmform-1" id="1060508650" class="" value="Email"/></div> 
- <div class="dmforminput small-12 dmRespDesignCol medium-12 large-12" id="1803051341"> <label for="1410772993" id="1757543471" data-dm-for="dmform-4">Subject</label> 
-<input type="text" name="dmform-4" id="1410772993" class=""/><input type="hidden" name="label-dmform-4" id="1061561771" class="" value="Subject"/></div> 
- <div class="dmforminput large-12 medium-12 dmRespDesignCol small-12" id="1913813612"> <label for="1747556637" id="1159167977" class="" data-dm-for="dmform-3">Message</label> 
- <textarea name="dmform-3" id="1747556637" class=""></textarea> 
-<input type="hidden" name="label-dmform-3" id="1651956675" class="" value="Message"/></div> 
- <span id="1887994787" class="dmWidgetClear"></span> 
- <span id="1593625744" class="dmWidgetClear"></span> 
- <div class="dmformsubmit dmWidget R" id="1695546343"><input class="" name="submit" type="submit" value="Submit Request" id="1475580272"/></div> 
-<input name="dmformsendto" type="hidden" value="O0wrseIfFLt2nVhWpJx9uspu91PKMtzIEr2D5Sc5qxiWtAqk/X4/GuNnsWoOcTDWN3KYLdnOLG8=" id="1904169841" class="" data-dec="true"/><input class="dmActionInput" type="hidden" name="action" value="/_dm/s/rt/widgets/dmform.submit.jsp" id="1186389785"/><input name="dmformfrom" type="hidden" id="1667206574" class="" value="freerangespace.net"/><input name="dmformsubject" type="hidden" value="Consultation Request" id="1513381668" class="" data-email-subject="Consultation Request"/><input type="hidden" name="spreadsheetId" value="1mQL2Z5ookHwrGF5x1qzi9BYg_1LAR0Mxa-ye8ytiZEE" [object="" object]="" id="1415418201"/><input type="hidden" name="googleIntegrationUUID" value="28437a9b6b424a8bb5599fe75118b507" [object="" object]="" id="1025426462"/><input name="dmformsubmitparams" type="hidden" value="8mpKnCSiNQXK/d9M7IDrS0Hahh0tGT3jAf0dDc+sDOm4Er3BuyQM9hmgjIaDrCQuNGd1IOc6Z/ax8xFrPkwBRcRCt7+K//zWNLqTxujdDjx/sBb3NuAVVpiTOFLtspCzz9GovU7TUI1zD/mrWg6e3dIo3Q08rb80rW6FwczLZVkngdOJaBGsqOOk+vW/FB5M2l7bbXKB8NkHwkP6o+SaUKuVfRAFKg6DI/WcTry9sHJx+8goeq/f9t21rE+fdr6puWdYDme3gn1C1LBykYyjlQ==" data-dec="true"/><input type="hidden" name="page_uuid" value="35ae2688a345436e9934d7dd95ab9927"/></form> 
-</div> 
- <div class="dmform-success" style="display:none" id="1446993552">Thank you for contacting us.<br id="1629501558"/>We will get back to you as soon as possible</div> 
- <div class="dmform-error" style="display:none" id="1371059894">Oops, there was an error sending your message.<br id="1973961525"/>Please try again later</div> 
-</div> 
-</div> 
-</div> 
-</div> 
- <div class="u_1414763560 dmRespRow" style="text-align: center;" id="1414763560"> <div class="dmRespColsWrapper" id="1873486417"> <div class="u_1338723751 dmRespCol small-12 medium-12 large-12" id="1338723751"> <div class="u_1579485372 dmNewParagraph" id="1579485372" style="transition: opacity 1s ease-in-out; display: block;" data-version="5"><p><span style="color:rgb(0, 0, 0);display:initial;font-family:Alata, 'Alata Fallback';">Alata</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:Alice, 'Alice Fallback';">Alice</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:'Open Sans', 'Open Sans Fallback';">Open Sans</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:'Noto Sans', 'Noto Sans Fallback';">Noto Sans</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:'Bebas Neue', 'Bebas Neue Fallback';">Bebas Neue</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:Exo, 'Exo Fallback';">Great Vibes</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:'Rock Salt', 'Rock Salt Fallback';">Rock Salt</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:Exo, 'Exo Fallback';">Exo</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:Belgrano, 'Belgrano Fallback';">Belgrano</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:Overlock, 'Overlock Fallback';">Overlock</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:Cinzel, 'Cinzel Fallback';">Cinzel</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:'Indie Flower', 'Indie Flower Fallback';">Indie Flower</span></p><p class="text-align-left"><span style="color:rgb(0, 0, 0);display:initial;font-family:Staatliches, 'Staatliches Fallback';">Staatliches</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:'Roboto Slab', 'Roboto Slab Fallback';">Roboto Slab</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:Lato, 'Lato Fallback';">Lato</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:'Noto Serif', 'Noto Serif Fallback';">Noto Serif</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:'Open Sans', 'Open Sans Fallback';">Open Sans</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:Montserrat, 'Montserrat Fallback';">Montserrat</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:Ubuntu, 'Ubuntu Fallback';">Ubuntu</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:Rubik, 'Rubik Fallback';">Rubik</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:Delius, 'Delius Fallback';">Delius</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:Amiri, 'Amiri Fallback';">Amiri</span></p><p><span style="color:rgb(0, 0, 0);display:initial;font-family:Montserrat, 'Montserrat Fallback';">Montserrat</span><span style="display: initial;"><br/></span></p></div></div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
+ 
  <div class="dmFooterContainer"> <div id="fcontainer" class="u_fcontainer f_hcontainer dmFooter p_hfcontainer"> <div dm:templateorder="250" class="dmFooterResp generalFooter" id="1943048428"> <div class="dmRespRow u_1632155419 backgroundLogoBackgroundColor" style="text-align: center;" id="1632155419"> <div class="dmRespColsWrapper" id="1253858808"> <div class="u_1063824722 dmRespCol small-12 large-4 medium-4" id="1063824722"> <div class="u_1901167991 imageWidget align-center" data-widget-type="image" id="1901167991" data-element-type="image"> <a href="index.html" id="1067941554"><img src="./images/noBgColor.png" id="1669146944" class="" data-inject="logo" data-dm-image-path="./images/noBgColor.png" onerror="handleImageLoadError(this)" height="21.53125" width="95.0"/></a> 
 </div> 
 </div> 
  <div class="u_1959088672 dmRespCol small-12 medium-4 large-4" id="1959088672"> <nav class="u_1145262698 unifiednav_vertical effect-text-fill main-navigation unifiednav dmLinksMenu" role="navigation" layout-main="vertical_nav_layout_4" layout-sub="" data-show-vertical-sub-items="HOVER" id="1145262698" dmle_extension="onelinksmenu" data-element-type="onelinksmenu" data-inject="footer-menu" data-nav-structure="VERTICAL" wr="true" icon="true" surround="true" adwords="" navigation-id="unifiedNav"> <ul role="menubar" class="unifiednav__container  " data-auto="navigation-pages"> <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="index.html" class="unifiednav__item  dmNavItemSelected  dmUDNavigationItem_00 black-text " target="" data-target-page-alias="" data-auto="selected-page"> <span class="nav-item-text " data-link-text="
          Home
-        " data-auto="page-text-style">Home<span class="icon icon-angle-down"></span> 
+        " data-auto="page-text-style"><span class="icon icon-angle-down"></span> 
 </span> 
 </a> 
 </li> 
- <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="contact.html" class="unifiednav__item  dmUDNavigationItem_010101943230 black-text " target="" data-target-page-alias=""> <span class="nav-item-text " data-link-text="
-         Contact
-        " data-auto="page-text-style">Contact<span class="icon icon-angle-down"></span> 
-</span> 
-</a> 
-</li> 
+
 </ul> 
 </nav> 
 </div> 
- <div class="u_1924939334 dmRespCol small-12 medium-4 large-4" id="1924939334"> <a data-display-type="block" class="u_1032571772 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient backgroundOnLogoBackgroundColor" file="false" href="contact.html" data-element-type="dButtonLinkId" id="1032571772"> <span class="iconBg" id="1820761282"> <span class="icon hasFontIcon icon-star" id="1511413215"></span> 
 </span> 
- <span class="text logoBackgroundColor" id="1304990593">Contact Us</span> 
 </a> 
 </div> 
 </div> 
@@ -701,63 +487,18 @@
 
     </div>
 </div>
-<!--  Add full CSS and Javascript before the close tag of the body if needed -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Google Fonts Include -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- loadCSS function fonts.jsp-->
-
-
 
 <link rel="preload" href="./css2.css"  as="style" fetchpriority="low" onload="loadCSS(this)" />
-
-
-
-
-
-<!-- RT CSS Include d-css-runtime-desktop-one-package-structured-global-->
 <link rel="preload" as="style" fetchpriority="low" onload="loadCSS(this)" href="d-css-runtime-desktop-one-package-structured-global.min.css" />
-
-<!-- End of RT CSS Include -->
-
 <link rel="preload" href="d0a07eab4a9e5aeef21aae933431386d.css" id="widgetCSS" as="style" fetchpriority="low" onload="loadCSS(this)" />
 
 <!-- Support `img` size attributes -->
-<style>img[width][height] {
-    height: auto;
-}</style>
+<style>
+        img[width][height] 
+    {
+        height: auto;
+    }
+</style>
 
 <!-- Support showing sticky element on page only -->
 <style>
@@ -850,126 +591,16 @@
     buildEditorParent();
 </script>
 
-<!-- Load jQuery -->
-<script type="text/javascript" id='d-js-jquery'
-        src="jquery-3.7.0.min.js"></script>
-<!-- End Load jQuery -->
-<!-- Injecting site-wide before scripts -->
-<!-- End Injecting site-wide to the head -->
+<div style="display:none;" ></div>
 
-
-<script>
-    var _jquery = window.$;
-
-    var jqueryAliases = ['$', 'jquery', 'jQuery'];
-
-    jqueryAliases.forEach((alias) => {
-        Object.defineProperty(window, alias, {
-            get() {
-                return _jquery;
-            },
-            set() {
-                console.warn("Trying to over-write the global jquery object!");
-            }
-        });
-    });
-    window.jQuery.migrateMute = true;
-</script>
-<script>
-    window.cookiesNotificationMarkupPreview = ' <div>We use cookies to ensure that we give you the best experience on our website. To learn more, go to the Privacy Page.<\/div> \n';
-</script>
-
-<!-- HEAD RT JS Include -->
-
-<script src="d-js-one-runtime-unified-desktop.min.js"  id="d-js-core"></script>
-<!-- End of HEAD RT JS Include -->
-<script src="d-js-jquery-migrate.min.js" ></script>
-<script>
-    
-    $(window).bind("orientationchange", function (e) {
-        $.layoutManager.initLayout();
-        
-    });
-    $(document).resize(function () {
-        
-    });
-</script>
-<script type="text/javascript" id="d_track_campaign">
-(function() {
-    if (!window.location.search) {
-        return;
-    }
-	const cleanParams = window.location.search.substring(1); // Strip ?
-	const queryParams = cleanParams.split('&');
-
-	const expires = 'expires=' + new Date().getTime() + 24 * 60 * 60 * 1000;
-	const domain = 'domain=' + window.location.hostname;
-	const path = "path=/";
-
-	queryParams.forEach((param) => {
-		const [key, value = ''] = param.split('=');
-		if (key.startsWith('utm_')) {
-			const cookieName = "_dm_rt_" + key.substring(4);
-			const cookie = cookieName + "=" + value;
-			const joined = [cookie, expires, domain, path].join(";");
-			document.cookie = joined;
-		}
-	});
-}());
-</script>
-<script type="text/javascript" >
-  var _dm_gaq = {};
-  var _gaq = _gaq || [];
-  var _dm_insite = [];
-</script>
-
-<script type="text/javascript" id="d_track_sp">
-;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
-p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
-};p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
-n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","//d32hwlnfiv2gyn.cloudfront.net/sp-2.0.0-dm-0.1.min.js","snowplow"));
-window.dmsnowplow  = window.snowplow;
-
-dmsnowplow('newTracker', 'cf', 'd32hwlnfiv2gyn.cloudfront.net', { // Initialise a tracker
-  appId: 'd8a54694'
-});
-
-// snowplow queries element styles so we wait until CSS calculations are done.
-requestAnimationFrame(() => {
-	dmsnowplow('trackPageView');
-	_dm_insite.forEach((rule) => {
-		// Specifically in popup only the client knows if it is shown or not so we don't always want to track its impression here
-		// the tracking is in popup.js
-		if (rule.actionName !== "popup") {
-			dmsnowplow('trackStructEvent', 'insite', 'impression', rule.ruleType, rule.ruleId);
-		}
-		window?.waitForDeferred?.('dmAjax', () => {
-			$.DM.events.trigger('event-ruleTriggered', {value: rule});
-		});
-	});
-});
-</script>
-   <div style="display:none;" id="P6iryBW0Wu"></div>
-
-<!-- photoswipe markup -->
-
-
-
-
-
-
-
-
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     <!-- Background of PhotoSwipe. 
          It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
+    <div ></div>
 
     <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
+    <div >
 
         <!-- Container that holds slides. 
             PhotoSwipe keeps only 3 of them in the DOM to save memory.
@@ -1028,29 +659,7 @@ requestAnimationFrame(() => {
 <div id="fb-root"
         data-locale="en"></div>
 <!-- Alias: d8a54694 -->
-<div class="dmPopupMask" id="dmPopupMask"></div>
-<div id="dmPopup" class="dmPopup">
-	<div class="dmPopupCloseWrapper"> <div class="dmPopupClose dm-common-icons-close oneIcon" onclick="dmHidePopup(event);"></div> </div>
- 	<div class="dmPopupTitle"> <span></span> Share by:</div> 
-	<div class="data"></div>
-</div><script id="d_track_personalization">
-	window?.waitForDeferred?.('dmAjax', () => {
-		// Collects client data and updates cookies used by smart sites
-		window.expireDays = 365;
-		window.visitLength = 30 * 60000;
-		$.setCookie("dm_timezone_offset", (new Date()).getTimezoneOffset(), window.expireDays);
-			setSmartSiteCookiesInternal("dm_this_page_view","dm_last_page_view","dm_total_visits","dm_last_visit");
-	});
-</script>
-<script type="text/javascript">
-    
-    Parameters.NavigationAreaParams.MoreButtonText = 'MORE';
-    
-    Parameters.NavigationAreaParams.LessButtonText = 'LESS';
-    Parameters.HomeLinkText = 'Home';
-    </script>
-<!--  End Script tags -->
-<!--  Site Wide Html Markup -->
-<!--  Site Wide Html Markup -->
+
+
 </body>
 </html>
